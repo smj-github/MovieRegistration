@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Movie Registration";
+}
+@model Movie
+<h1>Movie Registration</h1>
+
+<form asp-controller="Movie" asp-action="Confirmation" method="post">
+    <div class="form-group">
+        ID: <input name="ID" type="number" />
+    </div>
+    <div class="form-group">
+        Title: <input name="Title" type="text" /> @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label for="genre">Genre:</label>
+        <select name="genre" id="genre" required>
+            <option selected disabled hidden style='display: none' value=''></option>
+            <option value="drama">Drama</option>
+            <option value="action">Action</option>
+            <option value="comedy">Comedy</option>
+            <option value="horror">Horror</option>
+            <option value="horror">Science Fiction</option>
+            <option value="horror">Animation</option>
+            <option value="horror">Crime</option>
+        </select>
+    </div>
+    <div class="form-group">
+        Year: <input name="Year" type="number" min="1880" max="@DateTime.Now.Year" />
+    </div>
+    <div class="form-group">
+        <label for="Actors">Actors:</label><br />
+        <input name="Actors" type="text" required placeholder="Enter Actor"
+               oninvalid="this.setCustomValidity('Enter atleast one Actor')"
+               oninput="this.setCustomValidity('')" /><br />
+        <input name="Actors" type="text" /><br />
+        <input name="Actors" type="text" />
+    </div>
+    <div class="form-group">
+        <label for="Directors">Directors:</label><br />
+        <input name="Directors" type="text" required placeholder="Enter Director"
+               oninvalid="this.setCustomValidity('Enter atleast one Director')"
+               oninput="this.setCustomValidity('')" /><br />
+        <input name="Directors" type="text" /><br />
+        <input name="Directors" type="text" />
+    </div>
+    <div class="form-group">
+        <input name="Submit" type="submit" value="Register" />
+    </div>
+</form>
